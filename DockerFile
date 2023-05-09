@@ -1,0 +1,10 @@
+From ubuntu:16.04
+RUN apt-get -y update 
+RUN apt-get -y install apache2
+RUN acho "Hello World from Docker!">/var/www/html/index.html
+LABEL maintainer="juliakos498@gmail.com"
+WORKDIR /app
+COPY . .
+ARG my_var=my_default_value
+CMD["/usr/sbin/apache2","-D","FOREGROUND"] 
+EXPOSE 80

@@ -1,0 +1,15 @@
+version: '3'
+services:
+  web:
+    image: nginx:latest # або apache:latest
+    ports:
+      - "80:80"
+  checker:
+    build: .
+    depends_on:
+      - web
+    environment:
+      - EMAIL_ADDRESS=<"juliakos498@gmail.com">
+    volumes:
+      - ./error.log:/error.log
+    restart: always

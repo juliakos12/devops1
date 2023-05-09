@@ -8,4 +8,5 @@ response_code=$(curl -s -o /dev/null -w "%{http_code}" $url)
 
 if [[ $response_code -lt 200 || $response_code -ge 400 ]]; then
   echo "$(date): Error - Response code: $response_code" >> $log_file
+  # echo "Subject: Error - Response code: $response_code" | sendmail $email
 fi
